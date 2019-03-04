@@ -1,0 +1,13 @@
+try
+{
+	Connection connex = DriverManager.getConnection("jdbc:mysql://localhost:3306/tp17_bdd", "root", "");
+		
+	Statement state = connex.createStatement();
+	state.executeUpdate("UPDATE Groupe SET numeroTable = 1");
+			
+	connex.close();
+}
+catch (SQLException e)
+{
+	e.printStackTrace();
+}

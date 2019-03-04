@@ -1,10 +1,6 @@
 package model;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Connection;
-
-import application.View;
+import view.View;
 
 public class Model
 {
@@ -17,15 +13,7 @@ public class Model
 	
 	public void start()
 	{
-		try
-		{
-			Connection connex = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "");
-			connex.close();
-		}
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public View get_vue()
