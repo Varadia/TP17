@@ -1,8 +1,10 @@
 package application;
 
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.Model;
 import view.View;
@@ -21,10 +23,13 @@ public class MainApplication extends Application
 		primaryStage.setTitle("Commande");
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
-		
 		primaryStage.show();
 		
-		mdl.start();
+		Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+		primaryStage.setMinHeight(primScreenBounds.getHeight() * 0.4);
+		primaryStage.setMinWidth(primScreenBounds.getHeight() * 0.4);
+		primaryStage.centerOnScreen();
+		
 		vue.start();
 	}
   
