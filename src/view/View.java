@@ -3,38 +3,31 @@ package view;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import model.Model;
+import stock.Controller;
 import tools.Resize;
 
 public class View extends BorderPane
 {
-	private Model _mdl;
-	private static BorderPane _mainPane;
+	private static BorderPane _root;
 	
-	public void init(Model mdl)
+	public View()
 	{
-		_mdl = mdl;
-		
-		_mainPane = new BorderPane();
-		this.setCenter(_mainPane);
+		_root = new BorderPane();
+		this.setCenter(_root);
 	}
 	
 	public void start()
 	{
-		Scene scene = _mainPane.getScene();
-		_mainPane.setMaxSize(Resize.getHeight(scene, 1000), Resize.getHeight(scene, 600));
+		Scene scene = _root.getScene();
+		_root.setMaxSize(Resize.getWidth(scene, 1400), Resize.getHeight(scene, 800));
 		
-		_mainPane.setCenter(new V_connexion().start(scene, _mdl));
+		changeView(new V_connexion().get_mainPane());
 	}
 	
 	public static void changeView(Node page)
 	{
-		_mainPane.getChildren().clear();
-		_mainPane.setCenter(page);
-	}
-	
-	public Model get_mdl()
-	{
-		return _mdl;
+		Controller._actualNode = page;
+		_root.getChildren().clear();
+		_root.setCenter(page);
 	}
 }

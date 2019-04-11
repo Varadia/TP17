@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import model.Model;
+import stock.Controller;
 import view.View;
  
 public class MainApplication extends Application 
@@ -14,10 +14,7 @@ public class MainApplication extends Application
 	public void start(Stage primaryStage) 
 	{	
 		View vue = new View();
-		Model mdl = new Model();
-
-		vue.init(mdl);
-		mdl.init(vue);
+		Controller._vue = vue;
 		
 		Scene scene = new Scene(vue, Color.WHITE);
 		primaryStage.setTitle("Commande");

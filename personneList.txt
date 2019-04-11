@@ -1,4 +1,0 @@
-Name: Jean
-Color: 0xff0000ff
-Name: Kevin
-Color: 0x0000ffff

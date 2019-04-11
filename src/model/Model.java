@@ -3,27 +3,17 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import stock.Data;
 import tools.Personne;
-import view.View;
 
 public class Model
 {
-	private View _vue;
-	
-	public void init(View vue)
-	{
-		_vue = vue;
-	}
-	
-	public void savePersonne(ArrayList<TextField> pseudoList, ArrayList<ColorPicker> colorList)
+	public void savePersonne()
 	{
 		try
 		{
@@ -32,11 +22,11 @@ public class Model
 			state.executeUpdate("INSERT INTO Groupe(numeroTable) VALUES (1);");
 			
 			String query;
-			for (int i=0 ; i<pseudoList.size() ; i++)
+			for (int i=0 ; i<Data._pseudoList.size() ; i++)
 			{
 				query = "INSERT INTO Client(pseudo, couleur, idGroupe) VALUES";
-				query += "('"+pseudoList.get(i).getText();
-				query += "', '"+colorList.get(i).getValue();
+				query += "('"+Data._pseudoList.get(i).getText();
+				query += "', '"+Data._colorList.get(i).getValue();
 				query += "', 1);";
 				state.executeUpdate(query);
 			}
@@ -72,10 +62,5 @@ public class Model
 		}
 		
 		return null;
-	}
-	
-	public View get_vue()
-	{
-		return _vue;
 	}
 }
